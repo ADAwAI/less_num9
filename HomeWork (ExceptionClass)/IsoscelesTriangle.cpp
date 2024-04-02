@@ -3,11 +3,9 @@
 #include <cmath>
 
 IsoscelesTriangle::IsoscelesTriangle(double a, double b)
-    : Triangle(a, b, a, 0, 0, 0) {
-    // Угол B можно вычислить исходя из сторон a и b
-    B = std::acos((2 * a * a - b * b) / (2 * a * a)) * (180 / M_PI);
-    A = (180 - B) / 2;
-    C = A;
+    : Triangle(a, b, a, (180 - std::acos((2 * a * a - b * b) / (2 * a * a)) * (180 / M_PI)) / 2, std::acos((2 * a * a - b * b) / (2 * a * a))* (180 / M_PI), (180 - std::acos((2 * a * a - b * b) / (2 * a * a)) * (180 / M_PI)) / 2) {
+    // Здесь нет необходимости повторять проверки и вычисления углов, так как они уже выполнены
+    // в списке инициализации базового класса Triangle.
 }
 
 void IsoscelesTriangle::print_info() const {

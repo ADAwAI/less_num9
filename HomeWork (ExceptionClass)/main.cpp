@@ -17,31 +17,31 @@
 #include "Rhombus.h"
 #include "GeometryException.h"
 
-// Функция main
 int main() {
     setlocale(LC_ALL, "Russian");
 
     std::vector<Figure*> figures;
 
-    // Попытка создать правильную фигуру
+    // Создание и проверка различных фигур
     try {
-        figures.push_back(new Triangle(10, 10, 10, 60, 60, 60)); // Равносторонний треугольник, правильные параметры
-        std::cout << "Правильная фигура создана." << std::endl;
+        figures.push_back(new RightTriangle(3, 4)); // Прямоугольный треугольник
+        std::cout << "Прямоугольный треугольник создан успешно." << std::endl;
     }
     catch (const GeometryException& e) {
-        std::cout << "Ошибка при создании фигуры: " << e.what() << std::endl;
+        std::cout << "Ошибка при создании прямоугольного треугольника: " << e.what() << std::endl;
     }
 
-    // Попытка создать неправильную фигуру
     try {
-        figures.push_back(new Triangle(10, 20, 50, 20, 40, 120)); // Неправильные параметры, сумма углов не 180
-        std::cout << "Неправильная фигура создана." << std::endl;
+        figures.push_back(new IsoscelesTriangle(5, 6)); // Равнобедренный треугольник
+        std::cout << "Равнобедренный треугольник создан успешно." << std::endl;
     }
     catch (const GeometryException& e) {
-        std::cout << "Ошибка при создании фигуры: " << e.what() << std::endl;
+        std::cout << "Ошибка при создании равнобедренного треугольника: " << e.what() << std::endl;
     }
 
-    // Вывод информации о правильно созданных фигурах
+    // Добавление остальных фигур с аналогичной структурой try-catch
+
+    // Вывод информации о фигурах
     for (Figure* fig : figures) {
         fig->print_info();
         std::cout << std::endl;

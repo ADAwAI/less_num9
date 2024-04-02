@@ -2,7 +2,11 @@
 #include <iostream>
 
 Square::Square(double side)
-    : Quadrilateral(side, side, side, side, 90, 90, 90, 90) {}
+    : Quadrilateral(side, side, side, side, 90, 90, 90, 90) {
+    if (side <= 0) {
+        throw GeometryException("Сторона квадрата должна быть больше нуля.");
+    }
+}
 
 void Square::print_info() const {
     std::cout << "Квадрат:\n";

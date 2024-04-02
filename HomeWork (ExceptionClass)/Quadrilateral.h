@@ -2,6 +2,7 @@
 #define QUADRILATERAL_H
 
 #include "Figure.h"
+#include "GeometryException.h"
 
 // Класс Quadrilateral, наследующий класс Figure
 class Quadrilateral : public Figure {
